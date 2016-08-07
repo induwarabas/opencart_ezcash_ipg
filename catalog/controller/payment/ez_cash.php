@@ -71,7 +71,6 @@ EOD;
 			$this->session->data['failure_text'] = sprintf($this->language->get('text_failure_message_2'), $this->url->link('information/contact'));
 			$this->response->redirect($this->url->link('checkout/failure', '', true));
 		} else {
-			echo "Decrypted value: " . $decrypted;
 			$info = explode("|", $decrypted."||||||");
 
 			$this->model_payment_ez_cash->insertTransaction($info[0],$info[1],$info[2],$info[3],$info[5]);
