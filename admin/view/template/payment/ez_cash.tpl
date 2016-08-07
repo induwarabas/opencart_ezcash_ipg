@@ -26,6 +26,20 @@
 			<div class="panel-body">
 				<form action="<?php echo $action; ?>" method="post" enctype="multipart/form-data" id="form-ez_cash" class="form-horizontal">
 					<div class="form-group">
+						<label class="col-sm-2 control-label" for="input-mode"><?php echo $entry_mode; ?></label>
+						<div class="col-sm-10">
+							<select name="ez_cash_mode" id="input-mode" class="form-control">
+								<?php if ($ez_cash_mode == "Live") { ?>
+								<option value="Live" selected="selected">Live</option>
+								<option value="Test">Test</option>
+								<?php } else { ?>
+								<option value="Live">Live</option>
+								<option value="Test" selected="selected">Test</option>
+								<?php } ?>
+							</select>
+						</div>
+					</div>
+					<div class="form-group">
 						<label class="col-sm-2 control-label" for="input-merchant-id"><?php echo $entry_merchant_id; ?></label>
 						<div class="col-sm-10">
 							<input type="text" name="ez_cash_merchant_id" value="<?php echo $ez_cash_merchant_id; ?>" placeholder="<?php echo $entry_merchant_id; ?>" id="input-merchant-id" class="form-control" />

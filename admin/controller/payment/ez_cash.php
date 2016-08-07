@@ -24,9 +24,16 @@ class ControllerPaymentEzCash extends Controller {
         $data['entry_merchant_id'] = $this->language->get('entry_merchant_id');
         $data['entry_public_key'] = $this->language->get('entry_public_key');
         $data['entry_private_key'] = $this->language->get('entry_private_key');
+        $data['entry_mode'] = $this->language->get('entry_mode');
 
         $data['action'] = $this->url->link('payment/ez_cash', 'token=' . $this->session->data['token'], 'SSL');
         $data['cancel'] = $this->url->link('extension/payment', 'token=' . $this->session->data['token'], 'SSL');
+
+		if (isset($this->request->post['ez_cash_mode'])) {
+			$data['ez_cash_mode'] = $this->request->post['ez_cash_mode'];
+		} else {
+			$data['ez_cash_mode'] = $this->config->get('ez_cash_mode');
+		}
 
         if (isset($this->request->post['ez_cash_merchant_id'])) {
             $data['ez_cash_merchant_id'] = $this->request->post['ez_cash_merchant_id'];

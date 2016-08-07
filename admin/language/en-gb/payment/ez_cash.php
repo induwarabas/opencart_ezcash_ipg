@@ -8,9 +8,10 @@ $_['entry_merchant_id'] = 'Merchant ID';
 $_['entry_public_key'] = 'Public key';
 $_['entry_private_key'] = 'Private key';
 
-$_['entry_status'] = 'Status:';
-$_['entry_order_status'] = 'Order Status:';
-$_['entry_sort_order'] = 'Sort Order:';
+$_['entry_status'] = 'Status';
+$_['entry_order_status'] = 'Order Status';
+$_['entry_sort_order'] = 'Sort Order';
+$_['entry_mode'] = 'Mode';
 
 $_['text_button_save'] = 'Save';
 $_['text_button_cancel'] = 'Cancel';
