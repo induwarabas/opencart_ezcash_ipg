@@ -49,7 +49,7 @@ Enjoy... :)
 
 Feel free to contact me for any support.
 
-Email: induwarabas\@gmail.com
+Email: induwarabas@gmail.com
 
 Stackoverflow:
 [http://stackoverflow.com/questions/38924112/](http://stackoverflow.com/questions/38924112/sri-lanka-dialog-ez-cash-payment-gateway-for-opencart-2)
