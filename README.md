@@ -45,6 +45,17 @@ Enjoy... :)
 
  
 
+### Support
+
+Feel free to contact me for any support.
+
+Email: induwarabas\@gmail.com
+
+Stackoverflow:
+[http://stackoverflow.com/questions/38924112/](http://stackoverflow.com/questions/38924112/sri-lanka-dialog-ez-cash-payment-gateway-for-opencart-2)
+
+ 
+
 ### Note:
 
 Your generated private key is a single lined key. You need to format the private
