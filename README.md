@@ -1,5 +1,5 @@
-Sri Lanka Dialog eZ Cash payment gateway for Opencart 2
-=======================================================
+Sri Lanka Dialog eZ Cash internet payment gateway for Opencart 2
+================================================================
 
 This is fully working solution for Sri Lanka Dialog ez Cash payment gateway
 integration.
@@ -12,10 +12,24 @@ Instructions
 Just upload the contents in the upload directory. And install the payment
 gateway through the admin interface.
 
+ 
+
+Test Mode
+---------
+
 You can test this with the dialog TESTMERCHANT. Put the mode to “Test”.
 
+ 
+
+Live Mode
+---------
+
 After successfully registration as Dialog merchant paste the private key in the
-“Private Key” field. That is it...
+“Private Key” field.
+
+Put the mode to “Live”
+
+That is it...!!!
 
  
 
@@ -27,7 +41,11 @@ from the Dialog payment gateway when there is a transaction failure.
 
  
 
-### Note: 
+Enjoy... :)
+
+ 
+
+### Note:
 
 Your generated private key is a single lined key. You need to format the private
 key as follows (64 character length lines and BEGIN/END tags.
