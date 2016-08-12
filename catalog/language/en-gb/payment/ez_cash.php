@@ -1,5 +1,5 @@
 <?php
-$_['text_title'] = 'Dialog Ez Cash';
+$_['text_title'] = 'Dialog Ez Cash (by Dialog, Etisalat, Hutch)';
 $_['button_confirm'] = 'Confirm Order';
 $_['text_failure_message'] = '<p>There was a problem processing your payment with Dialog ezCash payment gateway.</p>
 

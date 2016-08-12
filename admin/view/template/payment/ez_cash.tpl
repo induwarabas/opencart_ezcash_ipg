@@ -46,12 +46,6 @@
 						</div>
 					</div>
 					<div class="form-group">
-						<label class="col-sm-2 control-label" for="input-public-key"><?php echo $entry_public_key; ?></label>
-						<div class="col-sm-10">
-							<textarea name="ez_cash_public_key" cols="80" rows="10" placeholder="<?php echo $entry_public_key; ?>" id="input-public-key" class="form-control"><?php echo $ez_cash_public_key ?></textarea>
-						</div>
-					</div>
-					<div class="form-group">
 						<label class="col-sm-2 control-label" for="input-instructions"><?php echo $entry_private_key; ?></label>
 						<div class="col-sm-10">
 							<textarea name="ez_cash_private_key" cols="80" rows="10" placeholder="<?php echo $entry_private_key; ?>" id="input-private-key" class="form-control"><?php echo $ez_cash_private_key ?></textarea>

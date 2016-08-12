@@ -19,7 +19,6 @@ L/UgGNeNd/m5o/VoX9+caAIyu/n8gBL5JX6asxhjH3FtvCRkT+AgtTY1Kpjb1Btp
 -----END PUBLIC KEY-----
 EOD;
 		if ($this->config->get('ez_cash_mode') == "Live") {
-			$publicKey = $this->config->get('ez_cash_public_key');
 			$merchantID = $this->config->get('ez_cash_merchant_id');
 		}
         $data['orderID'] = $this->session->data['order_id'];
@@ -41,6 +40,7 @@ EOD;
 
     public function callback() {
 		$this->load->model('payment/ez_cash');
+		$this->load->model('checkout/order');
 		$this->load->language('payment/ez_cash');
 		$encrypted = $this->request->post['merchantReciept'];
 		$privateKey = <<<EOD

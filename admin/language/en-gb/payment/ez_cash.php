@@ -5,7 +5,6 @@ $_['text_enabled'] = 'Enabled';
 $_['text_disabled'] = 'Disabled';
 
 $_['entry_merchant_id'] = 'Merchant ID';
-$_['entry_public_key'] = 'Public key';
 $_['entry_private_key'] = 'Private key';
 
 $_['entry_status'] = 'Status';

@@ -22,7 +22,6 @@ class ControllerPaymentEzCash extends Controller {
         $data['entry_status'] = $this->language->get('entry_status');
         $data['entry_sort_order'] = $this->language->get('entry_sort_order');
         $data['entry_merchant_id'] = $this->language->get('entry_merchant_id');
-        $data['entry_public_key'] = $this->language->get('entry_public_key');
         $data['entry_private_key'] = $this->language->get('entry_private_key');
         $data['entry_mode'] = $this->language->get('entry_mode');
 
@@ -39,12 +38,6 @@ class ControllerPaymentEzCash extends Controller {
             $data['ez_cash_merchant_id'] = $this->request->post['ez_cash_merchant_id'];
         } else {
             $data['ez_cash_merchant_id'] = $this->config->get('ez_cash_merchant_id');
-        }
-
-        if (isset($this->request->post['ez_cash_public_key'])) {
-            $data['ez_cash_public_key'] = $this->request->post['ez_cash_public_key'];
-        } else {
-            $data['ez_cash_public_key'] = $this->config->get('ez_cash_public_key');
         }
 
         if (isset($this->request->post['ez_cash_private_key'])) {
