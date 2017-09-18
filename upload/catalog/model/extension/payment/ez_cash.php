@@ -1,7 +1,7 @@
 <?php
-class ModelPaymentEzCash extends Model {
+class ModelExtensionPaymentEzCash extends Model {
     public function getMethod($address, $total) {
-        $this->load->language('payment/ez_cash');
+        $this->load->language('extension/payment/ez_cash');
 		$terms = '';
 		if ($this->config->get('ez_cash_mode') == "Test") {
 			$terms = 'Test';

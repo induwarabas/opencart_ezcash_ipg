@@ -1,16 +1,16 @@
 <?php
-class ControllerPaymentEzCash extends Controller {
+class ControllerExtensionPaymentEzCash extends Controller {
     private $error = array();
 
     public function index() {
-        $this->load->language('payment/ez_cash');
+        $this->load->language('extension/payment/ez_cash');
         $this->document->setTitle('eZ-Cash (by Dialog, Etisalat, Hutch)');
         $this->load->model('setting/setting');
 
         if (($this->request->server['REQUEST_METHOD'] == 'POST')) {
             $this->model_setting_setting->editSetting('ez_cash', $this->request->post);
             $this->session->data['success'] = 'Saved.';
-            $this->response->redirect($this->url->link('extension/payment', 'token=' . $this->session->data['token'], true));
+            $this->response->redirect($this->url->link('extension/extension', 'token=' . $this->session->data['token'], true));
         }
 
         $data['heading_title'] = $this->language->get('heading_title');
@@ -25,8 +25,8 @@ class ControllerPaymentEzCash extends Controller {
         $data['entry_private_key'] = $this->language->get('entry_private_key');
         $data['entry_mode'] = $this->language->get('entry_mode');
 
-        $data['action'] = $this->url->link('payment/ez_cash', 'token=' . $this->session->data['token'], 'SSL');
-        $data['cancel'] = $this->url->link('extension/payment', 'token=' . $this->session->data['token'], 'SSL');
+        $data['action'] = $this->url->link('extension/payment/ez_cash', 'token=' . $this->session->data['token'], 'SSL');
+        $data['cancel'] = $this->url->link('extension/extension', 'token=' . $this->session->data['token'], 'SSL');
 
 		if (isset($this->request->post['ez_cash_mode'])) {
 			$data['ez_cash_mode'] = $this->request->post['ez_cash_mode'];
@@ -79,12 +79,12 @@ class ControllerPaymentEzCash extends Controller {
 
         $data['breadcrumbs'][] = array(
             'text' => $this->language->get('text_payment'),
-            'href' => $this->url->link('extension/payment', 'token=' . $this->session->data['token'], true)
+            'href' => $this->url->link('extension/extension', 'token=' . $this->session->data['token'], true)
         );
 
         $data['breadcrumbs'][] = array(
             'text' => $this->language->get('heading_title'),
-            'href' => $this->url->link('payment/ez_cash', 'token=' . $this->session->data['token'], true)
+            'href' => $this->url->link('extension/payment/ez_cash', 'token=' . $this->session->data['token'], true)
         );
 
         $this->load->model('localisation/order_status');
@@ -94,16 +94,16 @@ class ControllerPaymentEzCash extends Controller {
         $data['column_left'] = $this->load->controller('common/column_left');
         $data['footer'] = $this->load->controller('common/footer');
 
-        $this->response->setOutput($this->load->view('payment/ez_cash', $data));
+        $this->response->setOutput($this->load->view('extension/payment/ez_cash', $data));
     }
 
     public function install() {
-        $this->load->model('payment/ez_cash');
-        $this->model_payment_ez_cash->install();
+        $this->load->model('extension/payment/ez_cash');
+        $this->model_extension_payment_ez_cash->install();
     }
 
     public function uninstall() {
-        $this->load->model('payment/ez_cash');
-        $this->model_payment_ez_cash->uninstall();
+        $this->load->model('extension/payment/ez_cash');
+        $this->model_extension_payment_ez_cash->uninstall();
     }
 }

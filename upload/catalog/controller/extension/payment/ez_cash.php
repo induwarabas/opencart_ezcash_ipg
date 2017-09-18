@@ -1,5 +1,5 @@
 <?php
-class ControllerPaymentEzCash extends Controller {
+class ControllerExtensionPaymentEzCash extends Controller {
     public function index() {
         $data['button_confirm'] = $this->language->get('button_confirm');
 
@@ -26,7 +26,7 @@ EOD;
         $order_info = $this->model_checkout_order->getOrder($this->session->data['order_id']);
 
         $total = number_format($order_info['total'], 2, '.', '');
-        $sensitiveData = $merchantID.'|'.$this->session->data['order_id'].'|'.$total.'|'.$this->url->link('payment/ez_cash/callback');
+        $sensitiveData = $merchantID.'|'.$this->session->data['order_id'].'|'.$total.'|'.$this->url->link('extension/payment/ez_cash/callback');
         $encrypted = '';
         if (!openssl_public_encrypt($sensitiveData, $encrypted, $publicKey))
             die('Failed to encrypt data');
@@ -35,13 +35,13 @@ EOD;
 
         $data['invoice'] = $invoice;
 
-        return $this->load->view('payment/ez_cash', $data);
+        return $this->load->view('extension/payment/ez_cash', $data);
     }
 
     public function callback() {
-		$this->load->model('payment/ez_cash');
+		$this->load->model('extension/payment/ez_cash');
 		$this->load->model('checkout/order');
-		$this->load->language('payment/ez_cash');
+		$this->load->language('extension/payment/ez_cash');
 		$encrypted = $this->request->post['merchantReciept'];
 		$privateKey = <<<EOD
 -----BEGIN PRIVATE KEY-----
