@@ -18,15 +18,15 @@ L/UgGNeNd/m5o/VoX9+caAIyu/n8gBL5JX6asxhjH3FtvCRkT+AgtTY1Kpjb1Btp
 1m3mtqHh6+fsIlpH/wIDAQAB
 -----END PUBLIC KEY-----
 EOD;
-		if ($this->config->get('ez_cash_mode') == "Live") {
-			$merchantID = $this->config->get('ez_cash_merchant_id');
+		if ($this->config->get('payment_ez_cash_mode') == "Live") {
+			$merchantID = $this->config->get('payment_ez_cash_merchant_id');
 		}
         $data['orderID'] = $this->session->data['order_id'];
 
         $order_info = $this->model_checkout_order->getOrder($this->session->data['order_id']);
 
         $total = number_format($order_info['total'], 2, '.', '');
-        $sensitiveData = $merchantID.'|'.$this->session->data['order_id'].'|'.$total.'|'.$this->url->link('extension/payment/ez_cash/callback');
+        $sensitiveData = $merchantID.'|'.date('YmdHis').'-'.$this->session->data['order_id'].'|'.$total.'|'.$this->url->link('extension/payment/ez_cash/callback');
         $encrypted = '';
         if (!openssl_public_encrypt($sensitiveData, $encrypted, $publicKey))
             die('Failed to encrypt data');
@@ -61,8 +61,8 @@ ioyuSf/CSotPIC7YyNEnr+TK2Ym0N/EWzqNXoOCDxDTgoWLQxM3Nfr65tWtV2097
 BjCbFfbui/IyUw==
 -----END PRIVATE KEY-----
 EOD;
-		if ($this->config->get('ez_cash_mode') == "Live") {
-			$privateKey = $this->config->get('ez_cash_private_key');
+		if ($this->config->get('payment_ez_cash_mode') == "Live") {
+			$privateKey = $this->config->get('payment_ez_cash_private_key');
 		}
 
 		$encrypted = base64_decode($encrypted); //decode the encrypted query string
@@ -72,11 +72,12 @@ EOD;
 			$this->response->redirect($this->url->link('checkout/failure', '', true));
 		} else {
 			$info = explode("|", $decrypted."||||||");
-
-			$this->model_payment_ez_cash->insertTransaction($info[0],$info[1],$info[2],$info[3],$info[5]);
+			$txid = explode("-", $info[0])[1];
+			
+			$this->model_payment_ez_cash->insertTransaction($txid,$info[1],$info[2],$info[3],$info[5]);
 			if ($info[1] == 2) {
-				$comment = "Payment done via ezCash internet payment gateway with ezCash reference number ".$info[5];
-				$this->model_checkout_order->addOrderHistory($info[0], $this->config->get('ez_cash_order_status_id'), $comment,true);
+				$comment = "Payment done via ezCash Internet payment gateway with ezCash reference number ".$info[5];
+				$this->model_checkout_order->addOrderHistory($txid, $this->config->get('payment_ez_cash_order_status_id'), $comment,true);
 				$this->response->redirect($this->url->link('checkout/success', '', true));
 			} else {
 				$this->session->data['failure_text'] = sprintf($this->language->get('text_failure_message'), $info[2], $this->url->link('information/contact'));
