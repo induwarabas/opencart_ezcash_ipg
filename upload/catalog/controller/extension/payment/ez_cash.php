@@ -9,6 +9,7 @@ class ControllerExtensionPaymentEzCash extends Controller {
 
 		$merchantID = "TESTMERCHANT";
 
+		$this->load->model('checkout/order');
 
 		$publicKey = <<<EOD
 -----BEGIN PUBLIC KEY-----
