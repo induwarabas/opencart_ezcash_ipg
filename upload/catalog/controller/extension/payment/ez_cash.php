@@ -75,7 +75,7 @@ EOD;
 			$info = explode("|", $decrypted."||||||");
 			$txid = explode("-", $info[0])[1];
 			
-			$this->model_payment_ez_cash->insertTransaction($txid,$info[1],$info[2],$info[3],$info[5]);
+			$this->model_extension_payment_ez_cash->insertTransaction($txid,$info[1],$info[2],$info[3],$info[5]);
 			if ($info[1] == 2) {
 				$comment = "Payment done via ezCash Internet payment gateway with ezCash reference number ".$info[5];
 				$this->model_checkout_order->addOrderHistory($txid, $this->config->get('payment_ez_cash_order_status_id'), $comment,true);
