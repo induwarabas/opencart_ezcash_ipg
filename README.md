@@ -1,4 +1,4 @@
-Sri Lanka Dialog eZ Cash internet payment gateway for Opencart 2
+Sri Lanka Dialog eZ Cash internet payment gateway for Opencart 3
 ================================================================
 
 This is fully working solution for Sri Lanka Dialog ez Cash payment gateway
